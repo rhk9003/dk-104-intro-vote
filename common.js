@@ -35,19 +35,8 @@
     return box;
   }
 
-  // 字數：不算空白和粗體記號
-  function charCount(blocks) {
-    return blocks.map(b => b.h || b.h2 || b.b || b.p || (b.li || []).join("")).join("")
-      .replace(/\*\*/g, "").replace(/\s+/g, "").length;
-  }
-
-  // 一般人讀中文約每分鐘 400 字
-  function readTime(n) {
-    const min = n / 400;
-    return min < 1 ? "不到 1 分鐘" : "約 " + Math.round(min) + " 分鐘";
-  }
-
-  function label(v) { return v.letter + " " + v.name; }
+  // 版本只用字母稱呼，不給名稱、分類或字數，避免影響判斷
+  function label(v) { return v.letter + " 版"; }
 
   function fmtTime(t) {
     const d = new Date(t);
@@ -56,5 +45,5 @@
     return p(d.getMonth() + 1) + "/" + p(d.getDate()) + " " + p(d.getHours()) + ":" + p(d.getMinutes());
   }
 
-  window.DKV = { el, inline, renderBlocks, charCount, readTime, label, fmtTime };
+  window.DKV = { el, inline, renderBlocks, label, fmtTime };
 })();

@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  const { el, renderBlocks, charCount, readTime, label } = window.DKV;
+  const { el, renderBlocks, label } = window.DKV;
   const CFG = window.VOTE_CONFIG;
   const VERSIONS = window.VERSIONS;
   const MAX = CFG.maxPicks;
@@ -80,17 +80,15 @@
     const jump = $("#jump");
     const root = $("#versions");
     ordered.forEach(v => {
-      const n = charCount(v.blocks);
-      jump.appendChild(el("a", { href: "#v-" + v.key }, [el("b", { text: v.letter }), " " + v.name, el("small", { text: n.toLocaleString() + " 字" })]));
+      jump.appendChild(el("a", { href: "#v-" + v.key }, [el("b", { text: v.letter }), " 版"]));
 
       const pickBtn = el("button", { type: "button", class: "pick", "aria-pressed": "false" });
-      const ta = el("textarea", { id: "note-" + v.key, maxlength: "2000", placeholder: "例：開頭太長、這句求職者看不懂、想保留創辦人蹲下試鞋那段…" });
+      const ta = el("textarea", { id: "note-" + v.key, maxlength: "2000", placeholder: "想改哪裡、為什麼" });
       ta.value = state.notes[v.key] || "";
       const li = el("li", { class: "version", id: "v-" + v.key }, [
         el("div", { class: "version-head" }, [
           el("span", { class: "letter", text: v.letter }),
-          el("h2", { text: v.name }),
-          el("span", { class: "meta", text: n.toLocaleString() + " 字・" + readTime(n) }),
+          el("h2", { text: label(v) }),
         ]),
         renderBlocks(v.blocks),
         el("div", { class: "version-foot" }, [
@@ -114,8 +112,7 @@
 
     const cur = window.CURRENT_VERSION;
     if (cur) {
-      const n = charCount(cur.blocks);
-      $("#current").replaceChildren(el("p", { class: "meta", text: n.toLocaleString() + " 字・" + readTime(n) }), renderBlocks(cur.blocks));
+      $("#current").replaceChildren(renderBlocks(cur.blocks));
     } else {
       document.querySelector(".current").hidden = true;
     }
