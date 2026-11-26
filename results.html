@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>票選結果管理頁</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <p class="eyebrow">DK 內部票選・管理頁</p>
+    <h1>104 公司介紹票選結果</h1>
+    <p class="lede">看得到投票人姓名。同一個人送出很多次的話，只算最後一次。</p>
+  </div>
+</header>
+
+<main class="wrap narrow">
+  <form id="pw-form" class="who" novalidate>
+    <label class="field" for="pw">
+      <span>結果頁密碼</span>
+      <input type="password" id="pw" autocomplete="current-password" required>
+    </label>
+    <p class="form-msg" id="pw-msg" role="alert"></p>
+    <div><button class="btn" type="submit">看結果</button></div>
+  </form>
+
+  <section id="results" hidden>
+    <div class="row board-tools">
+      <button type="button" class="btn ghost" id="refresh">重新整理</button>
+      <span class="muted" id="updated"></span>
+    </div>
+    <div class="stats" id="stats"></div>
+    <ul class="chips" id="depts"></ul>
+
+    <h2 class="section-title">得票排行與建議</h2>
+    <ol class="rank" id="rank"></ol>
+
+    <h2 class="section-title">整體建議</h2>
+    <div class="notes" id="overall" style="border-top:0"></div>
+
+    <h2 class="section-title">投票名單</h2>
+    <p class="muted" style="margin:6px 0 0">依最後一次送出時間排序，新的在上面。</p>
+    <div class="table-scroll" style="margin-bottom:72px">
+      <table class="roster">
+        <thead><tr><th>送出時間</th><th>部門</th><th>姓名</th><th>選的版本</th><th>建議</th></tr></thead>
+        <tbody id="roster"></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<script src="config.js"></script>
+<script src="versions.js"></script>
+<script src="common.js"></script>
+<script src="results.js"></script>
+</body>
+</html>

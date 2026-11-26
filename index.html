@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>104 公司介紹票選</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <p class="eyebrow">DK 內部票選</p>
+    <h1>104 公司介紹，你選哪一版？</h1>
+    <p class="lede">104 的公司介紹要改版，目前有 <span id="total">3</span> 個版本。請想像自己是正在找工作的人，選出你最想放上 104 的那一版。每一版都可以寫修改建議。</p>
+  </div>
+</header>
+
+<main>
+  <!-- 步驟一：部門／姓名 -->
+  <section id="step-who" class="wrap narrow">
+    <form id="who-form" class="who" novalidate>
+      <h2>先填你的部門和姓名</h2>
+      <label class="field" for="dept">
+        <span>所屬部門</span>
+        <input type="text" id="dept" name="dept" autocomplete="organization-title" maxlength="40" placeholder="例：營運部" required>
+      </label>
+      <label class="field" for="name">
+        <span>姓名</span>
+        <input type="text" id="name" name="name" autocomplete="name" maxlength="40" placeholder="例：王小明" required>
+      </label>
+      <p class="form-msg" id="who-msg" role="alert"></p>
+      <div><button class="btn" type="submit">開始看版本</button></div>
+    </form>
+  </section>
+
+  <!-- 步驟二：讀版本、投票 -->
+  <section id="step-vote" hidden>
+    <div class="votebar">
+      <div class="wrap">
+        <div class="voter"><span class="muted">投票人</span><strong id="voter-label"></strong><button type="button" class="linkish" id="edit-who">修改</button></div>
+        <div class="count" id="pick-status">還沒選</div>
+        <button type="button" class="btn" id="submit-top">送出投票</button>
+        <p class="bar-hint" id="bar-hint" role="status"></p>
+      </div>
+    </div>
+
+    <div class="wrap narrow">
+      <p class="howto">三個版本的順序每個人看到的不一樣，請每版都讀完再決定。看完按「選這版」，修改建議可以寫在任何一版下面，不一定要是你選的那版。填到一半關掉也沒關係，這台電腦會記住你填過的內容。</p>
+
+      <nav class="jump" aria-label="跳到版本" id="jump"></nav>
+
+      <details class="current">
+        <summary>對照：目前 104 上的版本（不列入投票）</summary>
+        <div id="current"></div>
+      </details>
+
+      <ol class="versions" id="versions"></ol>
+
+      <section class="submit-panel" aria-labelledby="submit-title">
+        <h2 id="submit-title">確認後送出</h2>
+        <label class="note" for="overall">
+          <span>整體建議（選填）：例如想把哪一版的哪一段，跟另一版合併</span>
+        </label>
+        <textarea id="overall" maxlength="2000" placeholder="例：用 C 的架構，開頭換成 A 的創辦人故事，濃縮成兩句…"></textarea>
+        <div id="summary"></div>
+        <p class="form-msg" id="submit-msg" role="alert"></p>
+        <div><button type="button" class="btn" id="submit-bottom">送出投票</button></div>
+      </section>
+    </div>
+  </section>
+
+  <!-- 步驟三：送出完成 -->
+  <section id="step-done" class="wrap narrow" hidden>
+    <div class="done">
+      <p class="ok">已收到你的投票，謝謝！</p>
+      <h2>你這次送出的內容</h2>
+      <div id="done-summary"></div>
+      <p class="muted">想改的話可以回去修改後再送一次，我們只會算你最後一次送出的版本。</p>
+      <div class="row"><a class="btn" href="board.html">看目前票選結果</a><button type="button" class="btn ghost" id="back-to-vote">回去修改</button></div>
+    </div>
+  </section>
+</main>
+
+<script src="config.js"></script>
+<script src="versions.js"></script>
+<script src="common.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

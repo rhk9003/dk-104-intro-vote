@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>104 公司介紹票選結果</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <p class="eyebrow">DK 內部票選</p>
+    <h1>104 公司介紹票選結果</h1>
+    <p class="lede">每人選一版，同一個人送出很多次只算最後一次。修改建議只標部門，不顯示姓名。</p>
+  </div>
+</header>
+
+<main class="wrap narrow">
+  <div class="row board-tools">
+    <button type="button" class="btn ghost" id="refresh">重新整理</button>
+    <span class="muted" id="updated">讀取中…</span>
+    <a class="board-link" href="./">還沒投票？去投票</a>
+  </div>
+  <p class="form-msg" id="board-msg" role="alert"></p>
+
+  <div class="stats" id="stats"></div>
+  <ul class="chips" id="depts"></ul>
+
+  <h2 class="section-title">得票排行</h2>
+  <ol class="rank" id="rank"></ol>
+
+  <section class="overall-block">
+    <h2 class="section-title">整體建議</h2>
+    <div class="notes" id="overall" style="border-top:0"></div>
+  </section>
+</main>
+
+<script src="config.js"></script>
+<script src="versions.js"></script>
+<script src="common.js"></script>
+<script src="board.js"></script>
+</body>
+</html>
